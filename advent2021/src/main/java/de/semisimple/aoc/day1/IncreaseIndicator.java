@@ -1,10 +1,11 @@
 package de.semisimple.aoc.day1;
 
-public class Increasometer {
+public class IncreaseIndicator implements IncreaseMeasure {
 
   private Integer lastInput;
 
-  public Change nextInput(int measurement) {
+  @Override
+  public Change evaluate(int measurement) {
     Change result;
     if (lastInput == null) {
       setLastInput(measurement);

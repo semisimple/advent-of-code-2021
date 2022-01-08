@@ -12,9 +12,19 @@ public class Day1 {
 
 
     try (Stream<String> lines = Files.lines(path)) {
-      final Long countIncreases = MeasureDevice.countIncreases(lines.map(Integer::parseInt));
+      final MeasuringDevice measureDevice = new MeasuringDevice(new IncreaseIndicator());
+      final Long countIncreases = measureDevice.countIncreases(lines.map(Integer::parseInt));
 
       System.out.println("Measurements larger than previous: " + countIncreases);
+    } catch (Exception e) {
+      System.err.println(e);
+    }
+
+    try (Stream<String> lines = Files.lines(path)) {
+      final MeasuringDevice measureDevice = new MeasuringDevice(new WindowIncreaseIndicator());
+      final Long countIncreases = measureDevice.countIncreases(lines.map(Integer::parseInt));
+
+      System.out.println("Window Measurements larger than previous: " + countIncreases);
     } catch (Exception e) {
       System.err.println(e);
     }
