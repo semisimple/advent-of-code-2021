@@ -6,9 +6,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum Direction {
 
-  DOWN((p, i) -> p.move(0, i)),
-  UP((p, i) -> p.move(0, -i)),
-  FORWARD((p, i) -> p.move(i, 0));
+  DOWN((p, i) -> p.aim(i)),
+  UP((p, i) -> p.aim(-i)),
+  FORWARD((p, i) -> p.move(i, i * p.getAim()));
 
   private final BiFunction<Position, Integer, Position> movement;
 

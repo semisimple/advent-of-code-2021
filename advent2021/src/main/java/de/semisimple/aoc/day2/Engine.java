@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 public class Engine {
 
-  private Position position = new Position(0, 0);
+  private Position position = new Position(0, 0, 0);
 
   public void run(Stream<String> lines) {
     lines.map(Instruction::parse)

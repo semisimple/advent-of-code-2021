@@ -14,7 +14,7 @@ class PositionTest {
   @ParameterizedTest
   @MethodSource("sampleInputsForMultiplication")
   void multiplyCoordinates_sampleInput_returnsProduct(int h, int d, int expected) {
-    final Position position = new Position(h, d);
+    final Position position = new Position(h, d, 0);
 
     assertEquals(expected, position.multiplyCoordinates());
   }
@@ -25,7 +25,7 @@ class PositionTest {
 
   @Test
   void move_twoHorizontalThreeUp_correctPosition() {
-    final Position position = new Position(1, 2);
+    final Position position = new Position(1, 2, 0);
 
     final Position result = position.move(2, -3);
 

@@ -24,6 +24,6 @@ class EngineTest {
 
     final Position result = engine.getPosition();
     assertEquals(15, result.getHorizontalPosition());
-    assertEquals(10, result.getDepth());
+    assertEquals(60, result.getDepth());
   }
 }
