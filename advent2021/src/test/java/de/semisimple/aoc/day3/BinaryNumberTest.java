@@ -1,8 +1,8 @@
 package de.semisimple.aoc.day3;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.BitSet;
 import org.junit.jupiter.api.Test;
 
 class BinaryNumberTest {
@@ -14,14 +14,9 @@ class BinaryNumberTest {
   }
 
   @Test
-  void name() {
-    final BitSet bitSet = new BitSet();
-    bitSet.set(1, true);
-    bitSet.set(2, true);
-    bitSet.set(4, true);
+  void toLong_sampleInput_returnsCorrectLongValue() {
+    final BinaryNumber parse = BinaryNumber.parse("00010");
 
-    final long l = bitSet.toLongArray()[0];
-    System.out.println(l);
-
+    assertEquals(2L, parse.toLong());
   }
 }

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
-class DiagnosticTest {
+class OxygenDiagnosticTest {
 
   @Test
   void scan_sampleInput_diagnosticShouldReturnRates() {
@@ -24,15 +24,10 @@ class DiagnosticTest {
         "01010"
     );
 
-    Diagnostic diagnostic = new Diagnostic();
-
-    diagnostic.scan(sample);
-
-    long g = diagnostic.evaluateGammaRate();
-    assertEquals(22, g);
-    long e = diagnostic.evaluateEpsilonRate();
-    assertEquals(9, e);
+    final OxygenDiagnostic scan = OxygenDiagnostic.scan(sample);
+    final long o2 = scan.evaluateOxygenRate();
+    assertEquals(23L, o2);
+    final long co2 = scan.evaluateCO2Rate();
+    assertEquals(10, co2);
   }
-
-
 }

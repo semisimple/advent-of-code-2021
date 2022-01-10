@@ -4,7 +4,7 @@ import java.util.BitSet;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class Diagnostic {
+public class EnergyDiagnostic {
 
   private int[] summed;
   private int totalElements = 0;
@@ -13,6 +13,7 @@ public class Diagnostic {
     sample.map(BinaryNumber::parse)
         .forEach(this::sum);
   }
+
 
   private void sum(BinaryNumber binaryNumber) {
     final int[] numbers = binaryNumber.getNumbers();
@@ -29,18 +30,23 @@ public class Diagnostic {
   public long evaluateGammaRate() {
     BitSet bitSet = new BitSet();
     for (int i = 0; i < summed.length; i++) {
-      boolean bit = summed[i] - (totalElements / 2) > 0;
+      boolean bit = mostCommonBit(i);
       bitSet.set((summed.length - 1) - i, bit);
     }
     return bitSet.toLongArray()[0];
   }
 
+  private boolean mostCommonBit(int index) {
+    return summed[index] - (totalElements / 2) > 0;
+  }
+
   public long evaluateEpsilonRate() {
     BitSet bitSet = new BitSet();
     for (int i = 0; i < summed.length; i++) {
-      boolean bit = summed[i] - (totalElements / 2) <= 0;
+      boolean bit = !mostCommonBit(i);
       bitSet.set((summed.length - 1) - i, bit);
     }
     return bitSet.toLongArray()[0];
   }
+
 }
