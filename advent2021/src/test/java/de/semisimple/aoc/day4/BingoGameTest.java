@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class BingoGameTest {
 
   @Test
-  void findFirstWinningBoard() {
+  void findFirstWinningBoard_sampleInput_stopsWithCorrectBoardAndField() {
     final List<String> sample = getSample();
 
     final BingoGame bingoGame = BingoGame.of(sample);
@@ -21,7 +21,7 @@ class BingoGameTest {
   }
 
   @Test
-  void findLastWinningBoard() {
+  void findLastWinningBoard_sampleInput_stopsWithCorrectBoardAndField() {
     final List<String> sample = getSample();
 
     final BingoGame bingoGame = BingoGame.of(sample);
